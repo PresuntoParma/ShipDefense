@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CannonballScript : MonoBehaviour
@@ -9,6 +10,13 @@ public class CannonballScript : MonoBehaviour
     private enum directions {left, right, up, down};
     [SerializeField] private directions direction;
     [SerializeField] private float minSwipeDistance = 50f;
+    [SerializeField] private int life;
+
+
+    private void Start()
+    {
+        GetDirection();
+    }
 
     void Update()
     {
@@ -67,11 +75,49 @@ public class CannonballScript : MonoBehaviour
         }
     }
 
+    private void GetDirection()
+    {
+        int directionNumber = Random.Range(0, 4);
+
+        switch (directionNumber)
+        {
+            case 0:
+                {
+                    direction = directions.left;
+                }
+                break;
+            case 1:
+                {
+                    direction = directions.right;
+                }
+                break;
+            case 2:
+                {
+                    direction = directions.up;
+                }
+                break;
+            case 3:
+                {
+                    direction = directions.down;
+                }
+                break;
+        }
+            
+    }
+
     private void Destroy(directions d)
     {
         if (d == direction)
         {
-            Destroy(this.gameObject);
+            life--;
+            if (life <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                GetDirection();
+            }
         }
     }
 }
