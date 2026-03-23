@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b0e6b56cb80f540bb6dc2a281419de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CannonballScript
+  direction: 2
   minSwipeDistance: 50
 --- !u!1 &519420028
 GameObject:

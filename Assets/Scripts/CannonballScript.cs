@@ -6,6 +6,8 @@ public class CannonballScript : MonoBehaviour
     private Vector2 touchEnd;
     private Touch touch;
 
+    private enum directions {left, right, up, down};
+    [SerializeField] private directions direction;
     [SerializeField] private float minSwipeDistance = 50f;
 
     void Update()
@@ -39,10 +41,12 @@ public class CannonballScript : MonoBehaviour
                 if (touchValue.x > 0)
                 {
                     print("direita");
+                    Destroy(directions.right);
                 }
                 else
                 {
                     print("esquerda");
+                    Destroy(directions.left);
                 }
             }
             else
@@ -52,12 +56,22 @@ public class CannonballScript : MonoBehaviour
                 if (touchValue.y > 0)
                 {
                     print("cima");
+                    Destroy(directions.up);
                 }
                 else
                 {
                     print("baixo");
+                    Destroy(directions.down);
                 }
             }
+        }
+    }
+
+    private void Destroy(directions d)
+    {
+        if (d == direction)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
