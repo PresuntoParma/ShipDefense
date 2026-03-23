@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,11 +12,13 @@ public class CannonballScript : MonoBehaviour
     [SerializeField] private directions direction;
     [SerializeField] private float minSwipeDistance = 50f;
     [SerializeField] private int life;
+    [SerializeField] private GameObject arrow;
 
 
     private void Start()
     {
         GetDirection();
+        GetScale();
     }
 
     void Update()
@@ -25,6 +28,11 @@ public class CannonballScript : MonoBehaviour
             touch = Input.GetTouch(0);
             Swipe();
         }
+    }
+
+    private void GetScale()
+    {
+        transform.localScale = new Vector3(1 + (life * 0.4f), 1 + (life * 0.4f), 1);
     }
 
     private void Swipe()
@@ -77,28 +85,32 @@ public class CannonballScript : MonoBehaviour
 
     private void GetDirection()
     {
-        int directionNumber = Random.Range(0, 4);
+        int directionNumber = UnityEngine.Random.Range(0, 4);
 
         switch (directionNumber)
         {
             case 0:
                 {
                     direction = directions.left;
+                    arrow.transform.eulerAngles = new Vector3(0, 0, 90);
                 }
                 break;
             case 1:
                 {
                     direction = directions.right;
+                    arrow.transform.eulerAngles = new Vector3(0, 0, -90);
                 }
                 break;
             case 2:
                 {
                     direction = directions.up;
+                    arrow.transform.eulerAngles = Vector2.zero;
                 }
                 break;
             case 3:
                 {
                     direction = directions.down;
+                    arrow.transform.eulerAngles = new Vector3(0, 0, 180);
                 }
                 break;
         }
@@ -117,6 +129,7 @@ public class CannonballScript : MonoBehaviour
             else
             {
                 GetDirection();
+                GetScale();
             }
         }
     }
