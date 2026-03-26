@@ -13,6 +13,7 @@ public class CannonballScript : MonoBehaviour
     [SerializeField] private float minSwipeDistance = 50f;
     [SerializeField] private int life;
     [SerializeField] private GameObject arrow;
+    [SerializeField] private float speed;
 
 
     private void Start()
@@ -28,6 +29,8 @@ public class CannonballScript : MonoBehaviour
             touch = Input.GetTouch(0);
             Swipe();
         }
+
+        transform.Translate(Vector2.down * speed * Time.deltaTime);
     }
 
     private void GetScale()
@@ -52,7 +55,6 @@ public class CannonballScript : MonoBehaviour
             }
             else if (Mathf.Abs(touchValue.x) > Mathf.Abs(touchValue.y))
             {
-                //HORIZONTAL
                 print("Horizontal");
                 if (touchValue.x > 0)
                 {
@@ -67,7 +69,6 @@ public class CannonballScript : MonoBehaviour
             }
             else
             {
-                //VERTICAL
                 print("Vertical");
                 if (touchValue.y > 0)
                 {
@@ -124,6 +125,7 @@ public class CannonballScript : MonoBehaviour
             life--;
             if (life <= 0)
             {
+                GameManager.score++;
                 Destroy(this.gameObject);
             }
             else

@@ -1,16 +1,12 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public static int score;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        score = 0;
     }
 }
