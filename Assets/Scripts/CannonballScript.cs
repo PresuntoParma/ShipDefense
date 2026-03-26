@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CannonballScript : MonoBehaviour
 {
@@ -133,6 +134,14 @@ public class CannonballScript : MonoBehaviour
                 GetDirection();
                 GetScale();
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Defeat"))
+        {
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }
