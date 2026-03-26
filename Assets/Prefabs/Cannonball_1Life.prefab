@@ -200,3 +200,4 @@ MonoBehaviour:
   minSwipeDistance: 50
   life: 1
   arrow: {fileID: 2263950613099002897}
+  speed: 4

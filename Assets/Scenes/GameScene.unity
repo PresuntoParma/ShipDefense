@@ -154,7 +154,7 @@ MonoBehaviour:
   maxX: 1.5
   minX: -1.5
   valueY: 4.5
-  spawnTime: 0.5
+  spawnTime: 0.8
 --- !u!4 &315135264
 Transform:
   m_ObjectHideFlags: 0
